@@ -1,17 +1,18 @@
-import * as React from 'react'
-import Layout from '../components/layout'
+import * as React from "react"
+import { Link } from "gatsby"
+//import { StaticImage } from "gatsby-plugin-image"
 
-// Step 2: Define your component
-const IndexPage = () => {
-  return (
-    <Layout pageTitle = "Home">
-        <p>I'm making this by following the Gatsby Tutorial.</p>
-     </Layout>
-  )
-}
+import Layout from "../components/layout"
+import { Seo } from "../components/seo"
 
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home</title>
+const IndexPage = () => (
+  <Layout>
+    <p>List customer reviews </p>
+  </Layout>
+)
 
-// Step 3: Export your component
 export default IndexPage
+
+export const Head = () => (
+    <Seo />
+)

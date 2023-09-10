@@ -1,41 +1,54 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
-import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText
-} from './layout.module.css'
+import * as React from "react"
+import PropTypes from "prop-types"
+import { useStaticQuery, graphql } from "gatsby"
 
-const Layout = ({ pageTitle, children }) => {
+import Navbar from "./navbar"
+import Footer from "./footer"
+import Header from "./header"
+import Leftnav from"./leftnav"
+import "./layout.scss"
+
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
   return (
-    <div className={container}>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/contact" className={navLinkText}>
-              Contact Us
-            </Link>
-          </li>
-        </ul>
-      </nav>
+    <div className="container-fluid p-0">
+      <Navbar siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+  
+      <div className="b-example-divider"></div>
+
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
+        <section className="py-5 container-fluid">
+          <div className="row py-lg-5">
+            <div className="col-lg-2 col-md-8 mx-auto">
+              <Leftnav siteTitle={data.site.siteMetadata?.title || `Title`} />
+            </div>
+            <div className="col-lg-6 col-md-8 mx-auto">
+              <p>{children}</p>
+            </div>
+          </div>
+        </section>
+
       </main>
+
+      <div className="b-example-divider"></div>
+
+      <Footer siteTitle={data.site.siteMetadata?.title || `Title`} />
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout
