@@ -10,12 +10,13 @@ const ExactNavLink = props => (
   <Link getProps={isActive} {...props} />
 )
 
-const Footer = ({}) => {
+const Footer = () => {
   return (
-    <section className="py-5 container-fluid bg-danger">
-      <footer>
-        <p className="text-center">&#169; 2023 || <Link to="kaffeinatedkodemonkey.com/">Kaffeinated Kodemonkey</Link></p>
-      </footer>
+    <section className="bg-dark pt-3" id="footer">
+
+      <footer className="container-fluid pt-5 pb-4 px-2  bg-danger text-white footer">
+        <p className="text-center">&#169; 2023 || <Link to="kaffeinatedkodemonkey.com">Kaffeinated Kodemonkey</Link></p>
+        </footer>
     </section>
   )
 }

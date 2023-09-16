@@ -12,7 +12,7 @@ export const Seo = ({ title, description, pathname, children }) => {
 
     return (
         <>
-            <title>{seo.title}</title>
+            <title>{seo.title}| {seo.description}</title>
             <meta name="description" content={seo.description} />
             <meta name="twitter:title" content={seo.title} />
             <meta name="twitter:url" content={seo.url} />

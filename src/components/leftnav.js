@@ -3,21 +3,19 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 const isActive = ({ isCurrent }) => {
-  return isCurrent ? { className: "list-group-item active" } : {className: "list-group-item"}
+  return isCurrent ? { className: "nav-link active" } : {className: "nav-link"}
 }
 
 const ExactNavLink = props => (
   <Link getProps={isActive} {...props} />
 )
 
-const Leftnav = ({}) => {
+const Leftnav = () => {
   return (
-    <ul className="list-group">
-      <li className="list-group-item"><ExactNavLink to="/">An active item</ExactNavLink></li>
-      <li className="list-group-item"><ExactNavLink to="...">A second item</ExactNavLink></li>
-      <li className="list-group-item"><ExactNavLink to="....">A third item</ExactNavLink></li>
-      <li className="list-group-item"><ExactNavLink to=".....">A fourth item</ExactNavLink></li>
-      <li className="list-group-item"><ExactNavLink to="......">And a fifth one</ExactNavLink></li>
+    <ul className="nav flex-column">
+      <li className="nav-item"><ExactNavLink className="nav-link" aria-current="page" href="#">Active</ExactNavLink></li>
+      <li className="nav-item"><ExactNavLink className="nav-link" href="#/.">Link</ExactNavLink></li>
+      <li className="nav-item"><ExactNavLink className="nav-link" href="#/..">Link</ExactNavLink></li>
     </ul>
   )
 }

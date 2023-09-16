@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Boostrap 5 Sass Starter`,
-    description: `A simple bootstrap 5 and Sass starter for Gatsby. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Gatsby Template Tutorial`,
+    subtitle: 'Customer Reviews',
+    description: `A simple bootstrap 5 and Sass starter for Gatsby.`,
     author: `@r-ichard`,
   },
   plugins: [
@@ -15,6 +16,13 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `review`,
+        path: `${__dirname}/reviews`,
+      }
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
