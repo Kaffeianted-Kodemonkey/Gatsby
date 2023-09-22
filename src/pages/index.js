@@ -7,25 +7,30 @@ import { Seo } from "../components/seo"
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout>
-    <h1>Customer Reviews</h1>
-      <ul>
+    <Layout pageTitle="Customer Reviews">
       {
-        data.allFile.nodes.map(node => (
-          <li key={node.name}><Link to={node.relativePath}>{node.name}</Link></li>
+        data.allMdx.nodes.map((node) => (
+          <article key={node.id}>
+            <h2>{node.frontmatter.title}</h2>
+            <p>Posted: {node.frontmatter.date}</p>
+            <p>{node.excerpt}</p>
+          </article>
         ))
       }
-      </ul>
     </Layout>
   )
 }
 
 export const query = graphql`
   query {
-    allFile(filter: {sourceInstanceName: {eq: "review"}}) {
+    allMdx(sort: { frontmatter: { date: DESC }}) {
       nodes {
-        name
-        relativePath
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
   }
