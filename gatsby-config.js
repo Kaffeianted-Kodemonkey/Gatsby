@@ -20,7 +20,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `review`,
-        path: `${__dirname}/reviews`,
+        path: `${__dirname}/review`,
       }
     },
     {
@@ -44,6 +44,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    "gatsby-plugin-mdx",
+    `gatsby-plugin-mdx`,
   ],
 }

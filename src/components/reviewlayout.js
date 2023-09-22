@@ -3,17 +3,17 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Navbar from "./navbar"
-import Header from "./header"
 import Leftnav from"./leftnav"
 import Footer from "./footer"
 import "./layout.scss"
 
-const Layout = ({ pageTitle, children }) => {
+const Reveiwlayout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
-          title
+          title,
+          subtitle
         }
       }
     }
@@ -22,7 +22,6 @@ const Layout = ({ pageTitle, children }) => {
   return (
     <div className="container-fluid p-0 d-flex flex-column h-100">
       <Navbar siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 
       <div className="b-example-divider"></div>
 
@@ -47,8 +46,8 @@ const Layout = ({ pageTitle, children }) => {
   )
 }
 
-Layout.propTypes = {
+Reveiwlayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default Reveiwlayout
